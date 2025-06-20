@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Monitor de Batimentos Cardíacos</title>
+</head>
+<body>
+  <h3>Batimentos Cardíacos (BPM)</h3>
+  <input id="inputBpm" type="number" placeholder="Digite os batimentos por minuto" />
+  <button onclick="salvar()">Salvar</button>
+
+  <h4>Histórico de Batimentos</h4>
+  <ul id="listaHistorico"></ul>
+
+  <script>
+    function salvar() {
+      const input = document.getElementById('inputBpm');
+      const bpm = parseFloat(input.value);
+      if (isNaN(bpm)) {
+        alert('Digite um número válido');
+        return;
+      }
+
+      // Avaliação dos batimentos cardíacos
+      let status = '';
+      if (bpm < 60) {
+        status = 'Baixa Frequência';
+      } else if (bpm <= 100) {
+        status = 'Normal';
+      } else {
+        status = 'Alta Frequência';
+      }
+
+      // Recupera histórico ou inicializa
+      const historico = JSON.parse(localStorage.getItem('historicoBpm') || '[]');
+
+      // Adiciona nova entrada
+      historico.push({ bpm, status, data: new Date().toLocaleString() });
+
+      // Salva no armazenamento local
+      localStorage.setItem('historicoBpm', JSON.stringify(historico));
+
+      // Atualiza tela
+      mostrarHistorico();
+      input.value = '';
+    }
+
+    function mostrarHistorico() {
+      const lista = document.getElementById('listaHistorico');
+      lista.innerHTML = '';
+
+      const historico = JSON.parse(localStorage.getItem('historicoBpm') || '[]');
+
+      historico.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.data}: ${item.bpm} BPM → ${item.status}`;
+        lista.appendChild(li);
+      });
+    }
+
+    // Exibe histórico ao carregar
+    mostrarHistorico();
+  </script>
+</body>
+</html>

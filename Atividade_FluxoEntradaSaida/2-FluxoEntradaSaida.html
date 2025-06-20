@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Exemplo Simples: Entrada, Processamento, Armazenamento e Saída</title>
+</head>
+<body>
+  <h3>Temperatura (°C)</h3>
+  <input id="inputTemp" type="number" placeholder="Digite a temperatura" />
+  <button onclick="salvar()">Salvar</button>
+
+  <h4>Histórico de Temperaturas</h4>
+  <ul id="listaHistorico"></ul>
+
+  <script>
+    // Função para salvar entrada, processar e armazenar
+    function salvar() {
+      const input = document.getElementById('inputTemp');
+      const temp = parseFloat(input.value);
+      if (isNaN(temp)) {
+        alert('Digite um número válido');
+        return;
+      }
+
+      // Processamento simples: temperatura > 25 = alerta
+      const status = temp > 25 ? 'Alerta' : 'OK';
+
+      // Recupera histórico do localStorage ou cria vazio
+      const historico = JSON.parse(localStorage.getItem('historicoTemp') || '[]');
+
+      // Adiciona nova entrada
+      historico.push({ temp, status, data: new Date().toLocaleString() });
+
+      // Salva de volta no localStorage
+      localStorage.setItem('historicoTemp', JSON.stringify(historico));
+
+      // Atualiza a lista na tela
+      mostrarHistorico();
+
+      // Limpa campo
+      input.value = '';
+    }
+
+    // Função para mostrar histórico na página
+    function mostrarHistorico() {
+      const lista = document.getElementById('listaHistorico');
+      lista.innerHTML = '';
+
+      const historico = JSON.parse(localStorage.getItem('historicoTemp') || '[]');
+
+      historico.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.data}: ${item.temp}°C → ${item.status}`;
+        lista.appendChild(li);
+      });
+    }
+
+    // Exibe histórico ao carregar a página
+    mostrarHistorico();
+  </script>
+</body>
+</html>

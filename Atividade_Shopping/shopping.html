@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Shopping Virtual - Lojas Customizáveis</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .loja {
+      width: 200px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.2s;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .loja:hover {
+      transform: scale(1.05);
+    }
+
+    .loja img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+    }
+
+    .loja h3 {
+      margin: 10px;
+    }
+
+    /* Personalizações individuais */
+    .moda     { background: #ffe6f0; color: #b30059; }
+    .eletron  { background: #e6f7ff; color: #005580; }
+    .livros   { background: #fff8e1; color: #aa6f00; }
+    .esporte  { background: #e8f5e9; color: #2e7d32; }
+    .alimento { background: #fff3e0; color: #bf360c; }
+    .brinq    { background: #fce4ec; color: #880e4f; }
+  </style>
+</head>
+<body>
+
+  <h1>🛍️ Shopping Virtual - Customize as Lojas</h1>
+
+  <div class="grid">
+    <div class="loja moda" onclick="mostrarLoja('Moda')">
+      <img src= "pexels-lum3n-44775-322207.jpg" alt="Moda">
+      <h3>Moda</h3>
+    </div>
+
+    <div class="loja eletron" onclick="mostrarLoja('Eletrônicos')">
+      <img src="pexels-pixabay-163100.jpg" alt="Eletrônicos">
+      <h3>Eletrônicos</h3>
+    </div>
+
+    <div class="loja livros" onclick="mostrarLoja('Livraria')">
+      <img src="https://via.placeholder.com/200x140?text=Livros" alt="Livros">
+      <h3>Livraria</h3>
+    </div>
+
+    <div class="loja esporte" onclick="mostrarLoja('Esportes')">
+      <img src="https://via.placeholder.com/200x140?text=Esportes" alt="Esportes">
+      <h3>Esportes</h3>
+    </div>
+
+    <div class="loja alimento" onclick="mostrarLoja('Alimentação')">
+      <img src="https://via.placeholder.com/200x140?text=Comida" alt="Comida">
+      <h3>Alimentação</h3>
+    </div>
+
+    <div class="loja brinq" onclick="mostrarLoja('Brinquedos')">
+      <img src="https://via.placeholder.com/200x140?text=Brinquedos" alt="Brinquedos">
+      <h3>Brinquedos</h3>
+    </div>
+  </div>
+
+  <script>
+    function mostrarLoja(nome) {
+      alert(`Você clicou na loja: ${nome}`);
+    }
+  </script>
+
+</body>
+</html>
