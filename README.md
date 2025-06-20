@@ -10,4 +10,4 @@ Computadores
 4) **Exemplos_Colab**: 🧪 Os códigos apresentados são exemplos práticos de entrada, processamento e saída de dados, desenvolvidos diretamente no Google Colab — uma ferramenta gratuita do Google para programar em Python pela web.
 
 📘 Para aprender a usar o Google Colab com instruções do próprio Google, acesse o manual oficial:
-👉 Documentação oficial do Google Colab (Google)
+👉 Documentação oficial do Google Colab (Google): https://colab.research.google.com/notebooks/intro.ipynb
